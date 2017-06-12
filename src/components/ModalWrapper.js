@@ -12,7 +12,7 @@ let modalWrapperStyles = {
   width : '40%',
   height: '50%',
   padding : '24px 20px',
-  transform : 'translate(-50%, -50%)',
+  transform : 'translate(-50%, -75%)',
   borderRadius : '2px'
 };
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { Link } from 'react-router';
 
-import { SIGN_IN, TOGGLE_MODAL } from '../actions/types';
+import { TOGGLE_MODAL, SIGN_IN, SIGN_UP } from '../actions/types';
 import { setModal } from '../actions/index';
 
 class Header extends Component {
@@ -14,7 +14,7 @@ class Header extends Component {
 
   renderLinks() {
 
-    const { toggleSignInModal } = this.props;
+    const { toggleSignInModal, toggleSignUpModal } = this.props;
 
     if(this.props.authenticated) {
       return(
@@ -27,8 +27,8 @@ class Header extends Component {
         <li className="nav-item navbar-right" onClick={toggleSignInModal} key={1}>
           <Link className="nav-link" >Sign In</Link>
         </li>,
-        <li className="nav-item navbar-right" key={2}>
-          <Link className="nav-link" to="/signup">Sign Up</Link>
+        <li className="nav-item navbar-right" onClick={toggleSignUpModal} key={2}>
+          <Link className="nav-link">Sign Up</Link>
         </li>
       ];
     }
@@ -52,7 +52,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleSignInModal: () => dispatch(setModal(dispatch, TOGGLE_MODAL, SIGN_IN))
+    toggleSignInModal: () => dispatch(setModal(dispatch, TOGGLE_MODAL, SIGN_IN)),
+    toggleSignUpModal: () => dispatch(setModal(dispatch, TOGGLE_MODAL, SIGN_UP))
     }
 };
 

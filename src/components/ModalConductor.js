@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { SIGN_IN } from '../actions/types';
+import { SIGN_IN, SIGN_UP} from '../actions/types';
 
 import SignInModal from './SignInModal';
+import SignUpModal from './SignUpModal';
 
 const ModalConductor = props => {
 
@@ -11,6 +12,8 @@ const ModalConductor = props => {
     case SIGN_IN:
       return <SignInModal {...props}/>;
 
+    case SIGN_UP:
+      return <SignUpModal {...props}/>;
     default:
       return null;
   }
