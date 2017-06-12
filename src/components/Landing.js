@@ -1,5 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const Landing = ({message}) => <h4>{message}</h4>;
+import { toggleModal } from '../actions';
 
-export default Landing;
+const Landing = ({ dispatch }) => {
+  return <h4>Welcome sign in to get started</h4>
+};
+
+
+export default connect()(Landing);
