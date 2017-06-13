@@ -5,8 +5,6 @@ import Transition from 'react-inline-transition-group';
 
 import { clearModal } from '../actions';
 
-
-
 const Overlay = (props) => {
 
   const styles = {
@@ -59,4 +57,5 @@ const mapDispatchToProps = (dispatch) => {
   clearModal: () => dispatch(clearModal)
   }
 };
+
 export default connect(null, mapDispatchToProps)(Overlay);

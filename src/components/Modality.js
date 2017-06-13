@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Overlay from './Overlay';
-import Modal from './ModalWrapper';
+import Modal from './Modal/ModalWrapper';
 
 const renderModalFromStore = () => {
   console.log('renderModalFromStore');

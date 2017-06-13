@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Header from './components/Header';
-import ModalConductor from './components/ModalConductor';
+import ModalConductor from './components/Modal/ModalConductor';
 
 class App extends Component{
 

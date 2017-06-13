@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "devDependencies": {
     "autoprefixer": "^7.1.1",
+    "axios": "^0.16.2",
     "babel-core": "^6.2.1",
     "babel-loader": "^6.2.0",
     "babel-plugin-styled-components": "^1.1.4",
@@ -21,6 +22,7 @@
     "react-drawer": "^1.2.5",
     "react-inline-transition-group": "^2.1.6",
     "react-router": "^2.8.1",
+    "redux-form": "^6.8.0",
     "redux-immutable-state-invariant": "^2.0.0",
     "style-loader": "^0.18.1",
     "webpack": "^1.12.9",
