@@ -8,7 +8,6 @@ import SignInModal from './SignInModal';
 import SignUpModal from './SignUpModal';
 
 const ModalConductor = props => {
-  console.log('ModalConduct', props);
   switch(props.currentModal) {
     case SIGN_IN:
       return <SignInModal {...props}/>;

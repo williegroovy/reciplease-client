@@ -31,7 +31,7 @@ const ModalWrapper = props => {
         </header>
         {props.children}
 
-        {okButton}
+
       </div>
     </Overlay>
   );

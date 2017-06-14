@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm , Field} from 'redux-form'
 
-import { signupUser } from '../actions/index';
+import { signinUser } from '../actions/index';
 
-class SignUpForm extends Component {
+class SignInForm extends Component {
 
   constructor(props) {
     super(props);
@@ -22,8 +22,8 @@ class SignUpForm extends Component {
 
   renderField = ({input, label, type, meta: { touched, error}}) => (
       <div style={{display: 'table-row'}}>
-        <input {...input} className="form-control" style={{marginBottom: '10px'}} type={type} placeholder={label}/>
-        {touched && error && <span className="error">{error}</span>}
+          <input {...input} className="form-control" style={{marginBottom: '10px'}} type={type} placeholder={label}/>
+          {touched && error && <span className="error">{error}</span>}
       </div>
     );
 
@@ -48,15 +48,8 @@ class SignUpForm extends Component {
             label="Password"
           />
 
-          <Field
-            name="passwordConfirm"
-            type="password"
-            component={this.renderField}
-            label="Confirm Password"
-          />
-
           {this.renderAlert()}
-          <button type="submit" style={{float: 'right'}} className="btn btn-primary">Sign up</button>
+          <button type="submit" className="btn btn-primary">Sign in</button>
         </form>
       </div>
     );
@@ -74,13 +67,6 @@ function validate(formProps) {
     errors.password = 'Please enter an password';
   }
 
-  if(!formProps.passwordConfirm) {
-    errors.passwordConfirm = 'Please validate password';
-  }
-
-  if(formProps.password !== formProps.passwordConfirm) {
-    errors.password = 'Passwords must match';
-  }
   return errors;
 }
 
@@ -92,13 +78,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSubmit: data => signupUser(data)(dispatch)
+    onSubmit: data => signinUser(data)(dispatch)
   }
 };
 
-const signUpForm = reduxForm({
-  form: 'signup',
+const signInForm = reduxForm({
+  form: 'signin',
   validate,
-}, mapStateToProps)(SignUpForm);
+}, mapStateToProps)(SignInForm);
 
-export default connect(mapStateToProps, mapDispatchToProps)(signUpForm);
+export default connect(mapStateToProps, mapDispatchToProps)(signInForm);

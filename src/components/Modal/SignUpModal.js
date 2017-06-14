@@ -16,8 +16,8 @@ class SignUpModal extends Component {
       top : '50%',
       left : '50%',
       width : '30%',
-      height : '70%',
-      transform : 'translate(-50%, -50%)',
+      height : '30%',
+      transform : 'translate(-50%, -100%)',
       borderRadius : '2px'
     },
 
@@ -36,7 +36,7 @@ class SignUpModal extends Component {
       height : '60px',
       paddingLeft: '10px',
       paddingRight: '10px',
-      marginBottom: '50px'
+      marginBottom: '20px'
     },
 
     button: {
@@ -44,15 +44,18 @@ class SignUpModal extends Component {
       float: 'right',
       border: 'none',
       background: 'transparent'
+    },
+
+    signupForm: {
+      display: 'table',
+      margin: 'auto'
     }
   };
 
   render() {
     return(
       <ModalWrapper title={'Sign Up'} hideModal={this.props.clearModal} style={this.modalStyle}>
-        <div>
-          <SignUpForm/>
-        </div>
+        <SignUpForm style={this.modalStyle.signupForm}/>
       </ModalWrapper>
     );
   }
