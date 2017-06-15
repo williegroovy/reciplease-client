@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Transition from 'react-inline-transition-group';
 
-import { clearModal } from '../actions';
+import { clearModal } from '../store/Modal/actions';
 
 const Overlay = (props) => {
 
@@ -32,7 +32,10 @@ const Overlay = (props) => {
           transition: 'all 1000ms',
       }
      };
-  const { clearModal } = props;
+  const { clearModal, modalClearOnClick } = props;
+
+  const renderOverlayClick = () => (
+    modalClearOnClick ? (e => e.target.dataset.space === 'overlay' ? clearModal() : null) : null);
 
   return (
     <Transition
@@ -44,12 +47,25 @@ const Overlay = (props) => {
     }>
       <div
         style={styles.overlay} data-space='overlay'
-        onClick={(e) => e.target.dataset.space === 'overlay' ? clearModal() : null }
+        onClick={renderOverlayClick()}
       >
+        <span
+          className="glyphicon glyphicon-remove"
+          style={{zIndex: 9999, position: 'absolute', top: 15, right: 25, color: 'white'}}
+          onClick={clearModal}
+        />
         {props.children}
       </div>
     </Transition>
   );
+};
+
+Overlay.propTypes = {
+  modalClearOnClick: PropTypes.bool,
+};
+
+Overlay.defaultProps = {
+  modalClearOnClick: true,
 };
 
 const mapDispatchToProps = (dispatch) => {

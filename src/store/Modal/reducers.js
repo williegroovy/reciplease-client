@@ -1,4 +1,4 @@
-import { TOGGLE_MODAL } from '../actions/types';
+import { TOGGLE_MODAL } from '../../constants/types';
 
 export default function(state = {}, action) {
   switch(action.type) {

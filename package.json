@@ -22,6 +22,7 @@
     "react-drawer": "^1.2.5",
     "react-inline-transition-group": "^2.1.6",
     "react-router": "^2.8.1",
+    "react-svg": "^2.1.21",
     "redux-form": "^6.8.0",
     "redux-immutable-state-invariant": "^2.0.0",
     "style-loader": "^0.18.1",

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
 import ModalWrapper from './ModalWrapper';
-import SignInForm from '../SignInForm';
+import Overlay from '../Overlay';
+import SignInForm from '../Forms/SignInForm';
 
 class SignInModal extends Component {
   constructor(props) {
@@ -9,15 +10,19 @@ class SignInModal extends Component {
   }
 
   modalStyle = {
+    pageCenter: {
+      position : 'fixed',
+      top : '20%',
+      left : '50%',
+    },
+
     modalWrapper: {
       background : '#fff',
-      position : 'absolute',
       zIndex : 9999,
-      top : '50%',
-      left : '50%',
-      width : '30%',
-      height : '30%',
-      transform : 'translate(-50%, -100%)',
+      position: 'relative',
+      left: '-50%',
+      width : '350px',
+      height : '300px',
       borderRadius : '2px'
     },
 
@@ -33,10 +38,10 @@ class SignInModal extends Component {
 
     head: {
       background: '#2196F3',
-      height : '60px',
+      height : '50px',
       paddingLeft: '10px',
       paddingRight: '10px',
-      marginBottom: '20px'
+      marginBottom: '40px'
     },
 
     button: {
@@ -46,17 +51,26 @@ class SignInModal extends Component {
       background: 'transparent'
     },
 
-    signinForm: {
-      display: 'table',
-      margin: 'auto'
+    svgStyle: {
+      height: 30,
+      width: 30,
+      right: 30,
+      marginTop: 2,
+      position: 'absolute'
+    },
+
+    form: {
+      width: '100%'
     }
   };
 
   render() {
     return(
-      <ModalWrapper style={this.modalStyle}>
-        <SignInForm style={this.modalStyle.signinForm}/>
-      </ModalWrapper>
+      <Overlay modalClearOnClick={false}>
+        <ModalWrapper title={"Sign In"} hideModal={this.props.clearModal} style={this.modalStyle}>
+          <SignInForm style={this.modalStyle}/>
+        </ModalWrapper>
+      </Overlay>
     );
   }
 }

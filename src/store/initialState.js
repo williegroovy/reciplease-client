@@ -1,6 +1,7 @@
 const initialState = {
   auth: {authenticated: false, error: ''},
-  modal: { currentModal: null }
+  modal: { currentModal: null },
+  recipes: { recipes: []}
 };
 
 export default initialState;

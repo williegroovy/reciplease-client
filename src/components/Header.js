@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 import { Link } from 'react-router';
 
-import { TOGGLE_MODAL, SIGN_IN, SIGN_UP } from '../actions/types';
-import { setModal } from '../actions/index';
+import { TOGGLE_MODAL, SIGN_IN, SIGN_UP } from '../constants/types';
+import { setModal } from '../store/Modal/actions';
 
 class Header extends Component {
 
@@ -36,7 +36,7 @@ class Header extends Component {
 
   render() {
     return(
-      <nav className="nav navbar-inverse">
+      <nav className="nav navbar">
         <Link to="/" className="navbar-brand">Reciplease</Link>
         <ul className="nav-auth nav navbar-nav pull-right">
           {this.renderLinks()}

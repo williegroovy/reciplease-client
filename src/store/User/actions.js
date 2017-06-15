@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, TOGGLE_MODAL } from './types';
-
-const API_URL = 'http://localhost:3090';
+import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, TOGGLE_MODAL} from '../../constants/types';
+import { userException } from '../../constants/throw';
+import { API_URL } from '../../constants/api';
 
 export const signinUser = ({email, password}) => {
   return dispatch => {
@@ -13,7 +13,10 @@ export const signinUser = ({email, password}) => {
         dispatch({type : TOGGLE_MODAL, payload: null});
         browserHistory.push('/');
       })
-      .catch(() => dispatch(authError('Incorrect username/password')));
+      .catch(error => {
+        dispatch(authError('Incorrect username/password'));
+        throw new userException(error);
+      });
   }
 };
 
@@ -29,7 +32,10 @@ export const signupUser = ({email, password}) => {
         dispatch({type : TOGGLE_MODAL, payload: null});
         browserHistory.push('/');
       })
-      .catch(response => dispatch(authError('Email is in use')));
+      .catch(error => {
+        dispatch(authError('Email already in use'));
+        throw new userException(error);
+      });
   }
 };
 
@@ -38,8 +44,4 @@ export const signoutUser = (dispatch) => {
   return dispatch({ type: UNAUTH_USER });
 };
 
-export const authError = error => {return { type: AUTH_ERROR, payload: error }};
-
-export const clearModal = (dispatch) => dispatch({type : TOGGLE_MODAL, payload: null});
-
-export const setModal = (dispatch, type, payload) => dispatch({type : type, payload : payload});
+export const authError = error => ({ type: AUTH_ERROR, payload: error });

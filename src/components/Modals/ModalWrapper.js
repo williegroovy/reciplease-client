@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Overlay from '../Overlay';
-
-
 const ModalWrapper = props => {
 
-  const { modalWrapper, head, title, button, verticalAlign } = props.style;
+  const { pageCenter, modalWrapper, head, title, button, verticalAlign } = props.style;
 
   const onOk = () => {
     props.onClick();
@@ -17,9 +14,9 @@ const ModalWrapper = props => {
     ? (<button onClick={onOk} disabled={props.okDisabled}> {props.okText} </button>) : null;
 
   return(
-    <Overlay>
+    <div style={pageCenter}>
       <div style={modalWrapper}>
-        <header style={head}>
+         <header style={head}>
           <div className="row" style={verticalAlign}>
             <div className="col-md-6">
               <h3 style={title}>{props.title}</h3>
@@ -30,10 +27,9 @@ const ModalWrapper = props => {
           </div>
         </header>
         {props.children}
-
-
+        {okButton}`
       </div>
-    </Overlay>
+    </div>
   );
 };
 
@@ -53,8 +49,8 @@ ModalWrapper.propTypes = {
 };
 
 ModalWrapper.defaultProps = {
-  title: 'Title Meh',
-  showOk: true,
+  title: '',
+  showOk: false,
   okText: 'OK',
   okDisabled: false,
   onOk: () => {console.log('oooootay')}

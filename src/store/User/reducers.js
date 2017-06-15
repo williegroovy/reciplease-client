@@ -1,4 +1,4 @@
-import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from '../actions/types';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from '../../constants/types';
 
 export default function(state = {}, action) {
 
@@ -7,7 +7,6 @@ export default function(state = {}, action) {
       return { ...state, error: '', authenticated: true };
 
     case UNAUTH_USER:
-      console.log('unauth');
       return { ...state, authenticated: false };
 
     case AUTH_ERROR:

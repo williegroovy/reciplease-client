@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm , Field} from 'redux-form'
 
-import { signinUser } from '../actions/index';
+import { signinUser } from '../../store/User/actions';
+
+import ReactSVG from 'react-svg';
 
 class SignInForm extends Component {
 
@@ -21,9 +23,9 @@ class SignInForm extends Component {
   };
 
   renderField = ({input, label, type, meta: { touched, error}}) => (
-      <div style={{display: 'table-row'}}>
-          <input {...input} className="form-control" style={{marginBottom: '10px'}} type={type} placeholder={label}/>
-          {touched && error && <span className="error">{error}</span>}
+      <div style={{marginLeft: 20, marginRight: 20}}>
+        {touched && error &&  <ReactSVG style={this.props.style.svgStyle} path="img/exclamation_warning_32.svg" />}
+        <input {...input} className="form-control" style={{ marginBottom: '15px'}} type={type} placeholder={label}/>
       </div>
     );
 
@@ -32,7 +34,7 @@ class SignInForm extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <div style={this.props.style}>
+      <div style={this.props.style.form}>
         <form onSubmit={handleSubmit}>
           <Field
             name="email"
@@ -49,7 +51,7 @@ class SignInForm extends Component {
           />
 
           {this.renderAlert()}
-          <button type="submit" className="btn btn-primary">Sign in</button>
+          <button type="submit" style={{marginRight: 20, float: 'right'}} className="btn btn-primary">Sign in</button>
         </form>
       </div>
     );

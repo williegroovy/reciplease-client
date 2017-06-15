@@ -6,7 +6,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import reduxThunk from 'redux-thunk';
 
-import initialState from './reducers/initialState';
+import initialState from './store/initialState';
 
 import App from './App';
 import './App.css'
@@ -14,8 +14,8 @@ import './App.css'
 import Landing from './components/Landing';
 import SignOut from './components/SignOut';
 
-import rootReducer from './reducers/index';
-import { AUTH_USER } from './actions/types';
+import rootReducer from './store/index';
+import { AUTH_USER } from './constants/types';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const createStoreWithMiddleware = applyMiddleware(reduxImmutableStateInvariant(), reduxThunk)(createStore);

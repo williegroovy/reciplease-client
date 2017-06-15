@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { SIGN_IN, SIGN_UP} from '../../actions/types';
-import { clearModal } from '../../actions/index';
+import { SIGN_IN, SIGN_UP} from '../../constants/types';
+import { clearModal } from '../../store/Modal/actions';
 
 import SignInModal from './SignInModal';
 import SignUpModal from './SignUpModal';

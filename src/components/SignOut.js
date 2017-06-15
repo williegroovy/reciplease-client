@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { signoutUser } from '../actions/index';
+import { signoutUser } from '../store/User/actions';
 
 class SignOut extends Component {
 
   componentWillMount() {
-    console.log('comp will mount');
-    console.log(this.props.signoutUser);
     this.props.signoutUser();
   }
 
