@@ -12,24 +12,31 @@ class Landing extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log(nextProps.recipes.recipes === this.props.recipes.recipes);
     let deepCompare = deepEqual(this.props.recipes, nextProps.recipes);
-    console.log('deepCompare', deepCompare);
     return deepCompare ? false : true
   }
 
+  renderRecipes = () => {
+    const {recipes} = this.props;
+
+    console.log('props.recipes', recipes);
+    console.log(Object.keys(recipes).length === 0 && recipes.constructor === Object);
+    if(!(Object.keys(recipes).length === 0 && recipes.constructor === Object)) {
+      console.log('recpbb', recipes[0]);
+    }
+    return (!(Object.keys(recipes).length === 0 && recipes.constructor === Object)) ? <p>{this.props.recipes[0].title}</p> : null
+  };
 
   render() {
-
-    const recipes = {...this.props.recipes};
+    const recipes = [...this.props.recipes];
     //Below actually gives back a flat object, but needs work to massage.
     //Should look into writing or finding a middleware to help massage the data into the format I need it in.
     //Plus we can strip away the extra fluff from mongodb.
-    console.log('recipes', recipes.recipes[0]);
     return (
       <div className="container" style={{height : '500px'}}>
         <h4>Welcome sign in to get started</h4>
         <button onClick={this.props.getUserRecipes}>Get Recipes</button>
+        {this.renderRecipes()}
       </div>
     );
   }

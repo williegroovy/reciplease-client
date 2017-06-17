@@ -8,8 +8,6 @@ export const getUserRecipes = () => {
     const config = {headers: {'authorization': token}};
 
     axios.get(`${API_URL}/user/recipes`, config)
-      .then(res => {
-        dispatch({type: RECIPES_FROM_USER, payload: res.data});
-      });
+      .then(res => dispatch({type: RECIPES_FROM_USER, payload: res.data}));
   }
 };
