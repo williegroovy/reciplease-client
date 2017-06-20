@@ -11,7 +11,7 @@ export const signinUser = ({email, password}) => {
         dispatch({ type: AUTH_USER });
         localStorage.setItem('token', response.data.token);
         dispatch({type : TOGGLE_MODAL, payload: null});
-        browserHistory.push('/');
+        browserHistory.push('/account');
       })
       .catch(error => {
         dispatch(authError('Incorrect username/password'));
@@ -21,10 +21,7 @@ export const signinUser = ({email, password}) => {
 };
 
 export const signupUser = ({email, password}) => {
-  console.log('sign up user');
-  console.log({email, password});
   return dispatch => {
-    console.log('sign up dispatch');
     axios.post(`${API_URL}/signup`, {email, password})
       .then(response => {
         dispatch({ type: AUTH_USER });

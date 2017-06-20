@@ -11,11 +11,14 @@ import initialState from './store/initialState';
 import App from './App';
 import './App.css'
 
-import Landing from './components/Landing';
+import landing from './components/Landing';
+import AccountHome from './components/AccountHome';
 import SignOut from './components/SignOut';
 
 import rootReducer from './store/index';
 import { AUTH_USER } from './constants/types';
+
+const Landing = landing(React);
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const createStoreWithMiddleware = applyMiddleware(reduxImmutableStateInvariant(), reduxThunk)(createStore);
@@ -27,13 +30,16 @@ if(token) {
   //update app state
   console.log('token found', token);
   store.dispatch({type: AUTH_USER});
+  browserHistory.push('/account');
 }
+
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path='/' component={App}>
         <IndexRoute component={Landing}/>
         <Route path='signout' component={SignOut}/>
+        <Route path="account" component={AccountHome}/>
       </Route>
     </Router>
   </Provider>

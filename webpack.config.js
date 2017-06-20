@@ -1,4 +1,4 @@
-var autoprefixer = require('autoprefixer');
+let autoprefixer = require('autoprefixer');
 
 module.exports = {
   devServer : {
@@ -16,13 +16,13 @@ module.exports = {
   module : {
     loaders : [
       {
-        exclude : /node_modules/,
+        exclude : [/node_modules/, /test/],
         loader : 'babel',
         query : {
           presets : [
             'react',
             'es2015',
-            'stage-1'
+            'stage-2'
           ]
         },
       },

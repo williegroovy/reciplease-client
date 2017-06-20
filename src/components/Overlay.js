@@ -5,33 +5,33 @@ import Transition from 'react-inline-transition-group';
 
 import { clearModal } from '../store/Modal/actions';
 
+const styles = {
+  overlay: {
+    position: 'fixed',
+    zIndex: 9998,
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    background: 'rgba(0,0,0,.6)'
+  },
+  base: {
+    opacity: 0,
+    transition: 'all 500ms',
+  },
+
+  show: {
+    opacity: 1,
+    transition: 'all 1000ms',
+  },
+
+  hide: {
+    opacity: 0,
+    transition: 'all 1000ms',
+  }
+};
+
 const Overlay = (props) => {
-
-  const styles = {
-        overlay: {
-          position: 'fixed',
-          zIndex: 9998,
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          background: 'rgba(0,0,0,.6)'
-        },
-        base: {
-          opacity: 0,
-          transition: 'all 500ms',
-       },
-
-        show: {
-          opacity: 1,
-          transition: 'all 1000ms',
-        },
-
-        hide: {
-          opacity: 0,
-          transition: 'all 1000ms',
-      }
-     };
   const { clearModal, modalClearOnClick } = props;
 
   const renderOverlayClick = () => (
@@ -68,10 +68,4 @@ Overlay.defaultProps = {
   modalClearOnClick: true,
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-  clearModal: () => dispatch(clearModal)
-  }
-};
-
-export default connect(null, mapDispatchToProps)(Overlay);
+export default Overlay;
