@@ -3,6 +3,12 @@ import { connect } from 'react-redux';
 
 import { signoutUser } from '../store/User/actions';
 
+/**
+ * TODO: Convert to functional component
+ * Careful with componentWillMount(), check for the recompose implementation
+ *
+ */
+
 class SignOut extends Component {
 
   componentWillMount() {
