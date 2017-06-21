@@ -60,15 +60,15 @@ const modalStyle = {
   }
 };
 
-const SignInModal = (props) => {
+const SignInModal = ({ clearModal }) => {
   return(
-    <Overlay clearModal={props.clearModal} modalClearOnClick={false}>
-      <ModalWrapper title={"Sign In"} hideModal={props.clearModal} style={modalStyle}>
+    <Overlay clearModal={clearModal} modalClearOnClick={false}>
+      <ModalWrapper title={"Sign In"} hideModal={clearModal} style={modalStyle}>
         <SignInForm style={modalStyle}/>
       </ModalWrapper>
     </Overlay>
   );
-}
+};
 
 SignInModal.propTypes = {
   clearModal: PropTypes.func,

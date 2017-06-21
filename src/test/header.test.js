@@ -5,7 +5,7 @@ import reactDom from 'react-dom/server';
 
 const render = reactDom.renderToStaticMarkup;
 
-import Header from '../components/Header';
+import Header from '../components/Header/Header';
 
 test('Header', nest => {
   nest.test('...Header should render the navbar', assert => {

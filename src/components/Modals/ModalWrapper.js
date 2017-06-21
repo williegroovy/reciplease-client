@@ -27,7 +27,7 @@ const ModalWrapper = props => {
           </div>
         </header>
         {props.children}
-        {okButton}`
+        {okButton}
       </div>
     </div>
   );
