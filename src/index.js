@@ -6,6 +6,8 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import reduxThunk from 'redux-thunk';
 
+import rootReducer from './store/index';
+import { AUTH_USER } from './constants/types';
 import initialState from './store/initialState';
 
 import App from './App';
@@ -14,9 +16,9 @@ import './App.css'
 import landing from './components/Landing';
 import AccountHome from './components/AccountHome';
 import SignOut from './components/SignOut';
+import RequireAuth from './components/require_auth';
+import Recipes from './components/recipes';
 
-import rootReducer from './store/index';
-import { AUTH_USER } from './constants/types';
 
 const Landing = landing(React);
 
@@ -37,9 +39,10 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path='/' component={App}>
-        <IndexRoute component={Landing}/>
-        <Route path='signout' component={SignOut}/>
-        <Route path="account" component={AccountHome}/>
+        <IndexRoute component={Landing} />
+        <Route path='signout' component={SignOut} />
+        <Route path="account" component={RequireAuth(AccountHome)} />
+        <Route path="recipes" component={Recipes} />
       </Route>
     </Router>
   </Provider>

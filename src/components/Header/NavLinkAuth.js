@@ -12,11 +12,14 @@ const ListItemWrapper = withProps(({ style, onClick }) => {style, onClick })('li
 const NavLinkAuth = ({ toggleModal }) => {
   return (
     <NavLinksRight>
-      <ListItemWrapper className={'nav-item'} onClick={toggleModal(SIGN_UP)}>
+      <ListItemWrapper className={'nav-item'} onClick={toggleModal(SIGN_UP)} key={1}>
         <NavLink label={'Sign Up'} style={'nav-link'} />
       </ListItemWrapper>
-      <ListItemWrapper className={'nav-item'} onClick={toggleModal(SIGN_IN)} key={1}>
+      <ListItemWrapper className={'nav-item'} onClick={toggleModal(SIGN_IN)} key={2}>
         <NavLink label={'Sign In'} style={'nav-link'} />
+      </ListItemWrapper>
+      <ListItemWrapper className={'nav-item'} key={3}>
+        <NavLink label={'Recipes'} linkSRC="/recipes" style={'nav-link'} />
       </ListItemWrapper>
     </NavLinksRight>
   )
