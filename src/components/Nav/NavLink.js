@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
-function NavLink({ label, linkSRC, clicked, style }) {
+function NavLink({ label, linkSRC, clicked, classes, style }) {
   return(
-    <Link to={linkSRC} onClick={clicked} className={style}>{label}</Link>
+    <Link to={linkSRC} onClick={clicked} className={classes} style={style}>{label}</Link>
   )
 }
 
@@ -12,15 +12,15 @@ NavLink.propTypes = {
   label: PropTypes.string,
   linkSRC: PropTypes.string,
   onClick: PropTypes.func,
-  style: PropTypes.string,
+  classes: PropTypes.string,
 };
 
 NavLink.defaultProps = {
   label: '',
   linkSRC: '/',
   clicked: null,
-  style: ''
-
+  classes: '',
+  style: {}
 };
 
 export default NavLink;

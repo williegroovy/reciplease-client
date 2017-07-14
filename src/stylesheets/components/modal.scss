@@ -1,0 +1,53 @@
+
+.modal-wrapper {
+  background: #fff;
+  z-index: 9999;
+  position: relative;
+  left: -50%;
+  width: 350px;
+  height: 300px;
+  border-radius: 2px;
+
+  h3 {
+    color: white;
+    margin-top: 0;
+    margin-bottom: 0;
+  };
+
+  .mw-vertical-align {
+    transform: translateY(50%);
+  };
+
+  .mw-head {
+    background: #2196F3;
+    height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 40px;
+  };
+
+  .mw-title {
+    color: white;
+    margin-top: 15px;
+    margin-bottom: 0;
+  };
+
+  .mw-button {
+    color: white;
+    float: right;
+    border: none;
+    background: transparent;
+  };
+
+  .mw-form {
+    width: 100%;
+  };
+
+  .mw-svg-warning {
+    height: 30px;
+    width: 30px;
+    right: 30px;
+    margin-top: 2px;
+    position: absolute;
+  };
+}

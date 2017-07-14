@@ -10,11 +10,16 @@ function NavLinkUnAuth() {
   return(
     <NavLinksRight>
       <ListItemWrapper className="nav-item">
-        <NavLink label="Sign Out" linkSRC="/signout" style="nav-link" />
+        <NavLink label="Edit" linkSRC="/edit" classes="nav-link" />
+      </ListItemWrapper>
+      <ListItemWrapper className="nav-item">
+        <NavLink label="Account" linkSRC="/account" classes="nav-link" />
+      </ListItemWrapper>
+      <ListItemWrapper className="nav-item">
+        <NavLink label="Sign Out" linkSRC="/signout" classes="nav-link" />
       </ListItemWrapper>
     </NavLinksRight>
   )
 }
 
 export default NavLinkUnAuth;
-

@@ -1,49 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, compose, applyMiddleware } from 'redux';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
-import reduxThunk from 'redux-thunk';
+import { BrowserRouter } from 'react-router-dom';
 
-import rootReducer from './store/index';
+import store from './store/store';
 import { AUTH_USER } from './constants/types';
-import initialState from './store/initialState';
 
-import App from './App';
-import './App.css'
-
-import landing from './components/Landing';
-import AccountHome from './components/AccountHome';
-import SignOut from './components/SignOut';
-import RequireAuth from './components/require_auth';
-import Recipes from './components/recipes';
-
-
-const Landing = landing(React);
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const createStoreWithMiddleware = applyMiddleware(reduxImmutableStateInvariant(), reduxThunk)(createStore);
-const store = createStoreWithMiddleware(rootReducer, initialState, composeEnhancers());
+import App from './components/App';
 
 const token = localStorage.getItem('token');
 
+// TODO: Fix security flaw so that any old token is no longer accepted.
 if(token) {
-  //update app state
-  console.log('token found', token);
   store.dispatch({type: AUTH_USER});
-  browserHistory.push('/account');
 }
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={browserHistory}>
-      <Route path='/' component={App}>
-        <IndexRoute component={Landing} />
-        <Route path='signout' component={SignOut} />
-        <Route path="account" component={RequireAuth(AccountHome)} />
-        <Route path="recipes" component={Recipes} />
-      </Route>
-    </Router>
+    <BrowserRouter>
+      <App/>
+    </BrowserRouter>
   </Provider>
-  , document.querySelector('.root'));
+  , document.getElementById('app'));

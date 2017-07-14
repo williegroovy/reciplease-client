@@ -1,7 +1,11 @@
 const initialState = {
-  auth: {authenticated: false, error: ''},
+  auth: {
+    error: '',
+    authenticated: false,
+    username: 'Darth Maul',
+    permission: 'user'
+  },
   modal: { currentModal: null },
-  recipes: []
 };
 
 export default initialState;

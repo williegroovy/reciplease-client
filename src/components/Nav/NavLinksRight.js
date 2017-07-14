@@ -9,7 +9,7 @@ import Nav from './MainNav';
 const NavLinksRight = (props) => {
   return(
     <Nav>
-      <ul className="nav-auth nav navbar-nav pull-right">
+      <ul className="nav navbar-nav pull-right">
         {props.children}
       </ul>
     </Nav>

@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { browserHistory } from 'react-router';
-import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, TOGGLE_MODAL} from '../../constants/types';
+import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, TOGGLE_MODAL, SET_USERNAME, SET_USER_PERMISSION} from '../../constants/types';
 import { userException } from '../../constants/throw';
 import { API_URL } from '../../constants/api';
 
@@ -11,7 +10,6 @@ export const signinUser = ({email, password}) => {
         dispatch({ type: AUTH_USER });
         localStorage.setItem('token', response.data.token);
         dispatch({type : TOGGLE_MODAL, payload: null});
-        browserHistory.push('/account');
       })
       .catch(error => {
         dispatch(authError('Incorrect username/password'));
@@ -27,7 +25,6 @@ export const signupUser = ({email, password}) => {
         dispatch({ type: AUTH_USER });
         localStorage.setItem('token', response.data.token);
         dispatch({type : TOGGLE_MODAL, payload: null});
-        browserHistory.push('/');
       })
       .catch(error => {
         dispatch(authError('Email already in use'));
@@ -39,6 +36,18 @@ export const signupUser = ({email, password}) => {
 export const signoutUser = (dispatch) => {
   localStorage.removeItem('token');
   return dispatch({ type: UNAUTH_USER });
+};
+
+export const setUsername = username => {
+  return dispatch => {
+    dispatch({ type: SET_USERNAME , payload: username })
+  }
+};
+
+export const setUserPermission = permissionLevel => {
+  return dispatch => {
+    dispatch({ type: SET_USER_PERMISSION, payload: permissionLevel })
+  }
 };
 
 export const authError = error => ({ type: AUTH_ERROR, payload: error });

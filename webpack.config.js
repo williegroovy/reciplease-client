@@ -1,50 +1,52 @@
-let autoprefixer = require('autoprefixer');
+let app_root = 'src';
+let path = require('path');
+let CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-  devServer : {
-    historyApiFallback : true,
-    contentBase : './public',
-  },
+  app_root: app_root,
   entry : [
-    './src/index.js',
+    'babel-polyfill',
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
+    __dirname + '/' + app_root + '/index.js'
   ],
   output : {
-    path : __dirname,
-    publicPath : '/public',
+    path : __dirname + '/public/js',
+    publicPath : 'js/',
     filename : 'bundle.js'
   },
   module : {
     loaders : [
       {
-        exclude : [/node_modules/, /test/],
-        loader : 'babel',
-        query : {
-          presets : [
-            'react',
-            'es2015',
-            'stage-2'
-          ]
-        },
+        test: /\.js$/,
+        loaders: ['react-hot', 'babel'],
+        exclude: [/node_modules/, /test/]
+      },
+      {
+        test : /\.scss$/,
+        loaders : ['style', 'css', 'postcss', 'sass'],
+        exclude: [/node_modules/, /test/]
       },
       {
         test : /\.css$/,
-        loader : 'style!css!postcss'
+        loaders: ['style', 'css', 'postcss'],
+        exclude: [/node_modules/, /test/]
+      },
+      {
+        test: /antd.*\.css/,
+        loaders: ['style', 'css', 'postcss'],
       }
     ]
   },
-  postcss : function () {
-    return [
-      autoprefixer({
-        browsers : [
-          '>1%',
-          'last 4 versions',
-          'Firefox ESR',
-          'not ie < 9', // React doesn't support IE8 anyway
-        ]
-      }),
-    ];
+  devServer: {
+    contentBase: __dirname + '/public',
   },
-  resolve : {
-    extensions : [ '', '.js', '.jsx' ]
-  },
+  plugins: [
+
+    new CleanWebpackPlugin(['css/main.css', 'js/bundle.js'], {
+      root: __dirname + '/public',
+      verbose: true,
+      dry: false //true for simulation
+    })
+  ]
 };

@@ -1,0 +1,9 @@
+// Import all stylesheets
+
+@import './components/all';
+@import './base/all';
+@import './themes/all';
+@import './utils/all';
+
+//antd
+@import '~antd/dist/antd.css';

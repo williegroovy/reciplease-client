@@ -22,19 +22,19 @@ class SignUpForm extends Component {
     }
   };
 
-  renderField = ({input, label, type, meta: { touched, error}}) => (
+  renderField = ({input, label, type, meta: { touched, error }}) => (
       <div style={{marginLeft: 20, marginRight: 20}}>
-        {touched && error &&  <ReactSVG style={this.props.style.svgStyle} path="img/exclamation_warning_32.svg" />}
+        {touched && error &&  <ReactSVG className="mw-svg-warning" path="media/exclamation_warning_32.svg" />}
         <input {...input} className="form-control" style={{marginBottom: '15px'}} type={type} placeholder={label}/>
       </div>
     );
 
   render() {
 
-    const { handleSubmit } = this.props;
+    const { handleSubmit, applyFormClass } = this.props;
 
     return (
-      <div style={this.props.style.form}>
+      <div className={applyFormClass}>
         <form onSubmit={handleSubmit}>
           <Field
             name="email"

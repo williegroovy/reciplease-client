@@ -1,32 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ModalWrapper = props => {
-
-  const { pageCenter, modalWrapper, head, title, button, verticalAlign } = props.style;
+const ModalWrapper = ({ button, okDisabled, showOk, okText, title, onClick, hideModal, children }) => {
 
   const onOk = () => {
-    props.onClick();
-    props.hideModal();
+    onClick();
+    hideModal();
   };
 
-  const okButton = props.showOk
-    ? (<button onClick={onOk} disabled={props.okDisabled}> {props.okText} </button>) : null;
+  const okButton = showOk
+    ? (<button onClick={onOk} disabled={okDisabled}> {okText} </button>) : null;
 
   return(
-    <div style={pageCenter}>
-      <div style={modalWrapper}>
-         <header style={head}>
-          <div className="row" style={verticalAlign}>
+    <div className="page-center">
+      <div className="modal-wrapper">
+         <header className="mw-head">
+          <div className="row mw-vertical-align">
             <div className="col-md-6">
-              <h3 style={title}>{props.title}</h3>
+              <h3>{title}</h3>
             </div>
             <div className="col-md-6">
-              <button style={button} onClick={props.hideModal}>CLOSE</button>
+              <button className="mw-button" onClick={hideModal}>CLOSE</button>
             </div>
           </div>
         </header>
-        {props.children}
+        {children}
         {okButton}
       </div>
     </div>
@@ -53,7 +51,6 @@ ModalWrapper.defaultProps = {
   showOk: false,
   okText: 'OK',
   okDisabled: false,
-  onOk: () => {console.log('oooootay')}
 };
 
 export default ModalWrapper;
