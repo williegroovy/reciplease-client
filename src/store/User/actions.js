@@ -1,19 +1,20 @@
 import axios from 'axios';
-import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, TOGGLE_MODAL, SET_USERNAME, SET_USER_PERMISSION} from '../../constants/types';
-import { userException } from '../../constants/throw';
+import { TOGGLE_CARD, SIGN_IN, USER_AUTH, USER_UNAUTH, USER_AUTH_ERROR, SET_USERNAME, SET_USER_PERMISSION } from '../../constants/types';
 import { API_URL } from '../../constants/api';
 
-export const signinUser = ({email, password}) => {
+export const signinUser = ({username, password}) => {
   return dispatch => {
-    axios.post(`${API_URL}/signin`, {email, password})
+    console.log("dispatch sign in");
+    axios.post(`${API_URL}/signin`, {username, password})
       .then(response => {
-        dispatch({ type: AUTH_USER });
+        dispatch({ type: USER_AUTH });
         localStorage.setItem('token', response.data.token);
-        dispatch({type : TOGGLE_MODAL, payload: null});
+        dispatch({type : TOGGLE_CARD, payload: null});
       })
       .catch(error => {
+        console.log('error');
         dispatch(authError('Incorrect username/password'));
-        throw new userException(error);
+        throw error;
       });
   }
 };
@@ -22,20 +23,21 @@ export const signupUser = ({email, password}) => {
   return dispatch => {
     axios.post(`${API_URL}/signup`, {email, password})
       .then(response => {
-        dispatch({ type: AUTH_USER });
+        dispatch({ type: USER_AUTH });
         localStorage.setItem('token', response.data.token);
-        dispatch({type : TOGGLE_MODAL, payload: null});
+        dispatch({type : TOGGLE_CARD, payload: null});
       })
       .catch(error => {
         dispatch(authError('Email already in use'));
-        throw new userException(error);
+        throw error;
       });
   }
 };
 
 export const signoutUser = (dispatch) => {
   localStorage.removeItem('token');
-  return dispatch({ type: UNAUTH_USER });
+  dispatch({ type: TOGGLE_CARD, payload: SIGN_IN});
+  return dispatch({ type: USER_UNAUTH });
 };
 
 export const setUsername = username => {
@@ -50,4 +52,4 @@ export const setUserPermission = permissionLevel => {
   }
 };
 
-export const authError = error => ({ type: AUTH_ERROR, payload: error });
+export const authError = error => ({ type: USER_AUTH_ERROR, payload: error });

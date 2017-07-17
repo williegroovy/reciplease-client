@@ -1,68 +1,48 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm , Field} from 'redux-form';
-
 import { signinUser } from '../../store/User/actions';
 
-import ReactSVG from 'react-svg';
+import { TextField, Button, FontIcon } from 'react-md';
 
-class SignInForm extends Component {
+const renderTextField = ({ input, iconType, meta: { touched, error }, ...others }) => (
+  <TextField
+    {...input} {...others} leftIcon={<FontIcon>{iconType}</FontIcon>} error={touched && !!error} errorText={error}
+  />
+);
 
-  constructor(props) {
-    super(props);
-  }
+const SignInForm = ({ handleSubmit }) => (
+  <form onSubmit={handleSubmit} className="sm-grid">
+    <Field
+      id="username"
+      name="username"
+      label="Username"
+      type="text"
+      iconType="person_outline"
+      component={renderTextField}
+      errorText="Log In error, check your username and try again."
+    />
 
-  renderAlert = () => {
-    if(this.props.errorMessage) {
-      return (
-        <div className="alert alert-danger">
-          <strong>Oops!</strong> {this.props.errorMessage}
-        </div>
-      );
-    }
-  };
+    <Field
+      id="password"
+      name="password"
+      label="Password"
+      type="password"
+      iconType="lock_outline"
+      component={renderTextField}
+      errorText="Log In error, check your password and try again."
 
-  renderField = ({input, label, type, meta: { touched, error}}) => (
-      <div style={{marginLeft: 20, marginRight: 20}}>
-        {touched && error &&  <ReactSVG className="mw-svg-warning" path="media/exclamation_warning_32.svg" />}
-        <input {...input} className="form-control" style={{ marginBottom: '15px'}} type={type} placeholder={label}/>
-      </div>
-    );
+    />
+    <Button type="submit" className="sign-in-btn md-grid" flat label="Sign In" />
+  </form>
+);
 
-  render() {
-
-    const { handleSubmit, applyFromClass} = this.props;
-
-    return (
-      <div className={applyFromClass}>
-        <form onSubmit={handleSubmit}>
-          <Field
-            name="email"
-            type="text"
-            component={this.renderField}
-            label="Email"
-          />
-
-          <Field
-            name="password"
-            type="password"
-            component={this.renderField}
-            label="Password"
-          />
-
-          {this.renderAlert()}
-          <button type="submit" style={{marginRight: 20, float: 'right'}} className="btn btn-primary">Sign in</button>
-        </form>
-      </div>
-    );
-  }
-}
 
 function validate(formProps) {
   const errors = {};
-
-  if(!formProps.email) {
-    errors.email = 'Please enter an email';
+  console.log('validate');
+  if(!formProps.username) {
+    errors.username = 'Please enter an email';
   }
 
   if(!formProps.password) {
@@ -74,7 +54,7 @@ function validate(formProps) {
 
 const mapStateToProps = state => {
   return {
-    errorMessage: state.auth.error
+    error: state.user.error
   }
 };
 

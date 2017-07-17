@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import authReducer from './User/reducers';
-import modalReducer from './Modal/reducers';
+import userReducer from './User/reducers';
+import focusCardReducer from './FoucsCard/reducers';
 
 const rootReducer = combineReducers({
   form: formReducer,
-  auth: authReducer,
-  modal: modalReducer
+  user: userReducer,
+  focusCard: focusCardReducer
 });
 
 export default rootReducer;

@@ -1,9 +1,32 @@
+@mixin better-blur($radius) {
+  filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='a' x='0' y='0' width='1' height='1' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='#{$radius}' result='b'/%3E%3CfeMorphology operator='dilate' radius='#{$radius}'/%3E %3CfeMerge%3E%3CfeMergeNode/%3E%3CfeMergeNode in='b'/%3E%3C/feMerge%3E%3C/filter%3E %3C/svg%3E#a");
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+}
+
+#app {
+  height: 100%;
+}
+
+
+
+
 // Import all stylesheets
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import '~react-md/src/scss/_react-md';
+
+$md-primary-color: $md-teal-500;
+$md-secondary-color: $md-pink-a-400;
+
+@include react-md-everything;
 
 @import './components/all';
 @import './base/all';
 @import './themes/all';
 @import './utils/all';
 
-//antd
-@import '~antd/dist/antd.css';
+

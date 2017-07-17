@@ -88,7 +88,7 @@ function validate(formProps) {
 
 const mapStateToProps = state => {
   return {
-    errorMessage: state.auth.error
+    errorMessage: state.user.error
   }
 };
 

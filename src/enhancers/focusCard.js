@@ -1,15 +1,15 @@
 import { withHandlers } from 'recompose';
 import { connect } from 'react-redux';
 
-import { setModal, clearModal } from  '../store/Modal/actions';
-import { TOGGLE_MODAL } from '../constants/types';
+import { showCard, clearCard } from  '../store/FoucsCard/actions';
+import { TOGGLE_CARD } from '../constants/types';
 
-export const current = () => connect(state => ({currentModal: state.modal.currentModal}));
+export const currentCard = () => connect(state => ({focusCard: state.focusCard.currentCard}));
 
-export const toggle = () => withHandlers(
+export const cardActions = () => withHandlers(
   {
-    toggleClear: ({ dispatch }) => () => dispatch(clearModal(dispatch)),
-    toggleModal: ({ dispatch }) => (modal) => () => dispatch(setModal(dispatch, TOGGLE_MODAL, modal))
+    clearFocusCard: ({ dispatch }) => () => dispatch(clearCard(dispatch)),
+    showCard: ({ dispatch }) => (card) => () => dispatch(showCard(dispatch, TOGGLE_CARD, card))
   }
 );
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose, branch, renderComponent, setDisplayName} from 'recompose';
 
-import { toggle } from '../enhancers/modal';
+import { toggle } from '../enhancers/focusCard';
 import { authenticated } from '../enhancers/user';
 
 import MainNav from './Nav/MainNav';

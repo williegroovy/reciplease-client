@@ -1,28 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Button } from 'react-md';
 
-const Overlay = (props) => {
-  const { clearModal, modalClearOnClick } = props;
+/*
+ * COMPONENT STYLESHEET @ /src/stylesheets/components/overlay.scss
+ */
 
-  const renderOverlayClick = ()  => (
-    modalClearOnClick ? (e => e.target.dataset.space === 'overlay' ? clearModal() : null) : null);
+const OverlayPropTypes = {
+  clearPresentation: PropTypes.func,
+  clearOverlayOnClick: PropTypes.bool,
+};
 
+const OverlayDefaultProps = {
+  clearOverlayOnClick: true,
+};
+
+const clearIcon = (handleClick) => <Button key="close" id="close-overlay" onClick={handleClick()} icon>clear</Button>;
+
+const renderClearIcon = (clearOverlayOnClick, clearPresentation)  => (
+  clearOverlayOnClick ? (e => e.target.dataset.space === 'overlay' ? clearPresentation() : null) : null
+);
+
+const Overlay = ({ clearPresentation, clearOverlayOnClick, children }) => {
+  console.log("Overlay Render");
   return (
-    <div key="overlay" data-space='overlay' className="overlay" style={{background: props.background}} onClick={renderOverlayClick()}>
-      <span className="glyphicon glyphicon-remove" onClick={clearModal} />
-      {props.children}
+    <div key="overlay" data-space='overlay' className="overlay" onClick={renderClearIcon(clearOverlayOnClick, clearPresentation)}>
+      {clearIcon(() => clearPresentation)}
+      {children}
     </div>
   );
 };
 
-Overlay.propTypes = {
-  modalClearOnClick: PropTypes.bool,
-  background: PropTypes.string
-};
-
-Overlay.defaultProps = {
-  modalClearOnClick: true
-};
+Overlay.propTypes = OverlayPropTypes;
+Overlay.defaultProps = OverlayDefaultProps;
 
 export default Overlay;

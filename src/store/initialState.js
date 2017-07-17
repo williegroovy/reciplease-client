@@ -1,11 +1,11 @@
 const initialState = {
-  auth: {
+  user: {
     error: '',
     authenticated: false,
     username: 'Darth Maul',
     permission: 'user'
   },
-  modal: { currentModal: null },
+  focusCard: { currentCard: null },
 };
 
 export default initialState;

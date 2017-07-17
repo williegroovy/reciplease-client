@@ -31,10 +31,6 @@ module.exports = {
         test : /\.css$/,
         loaders: ['style', 'css', 'postcss'],
         exclude: [/node_modules/, /test/]
-      },
-      {
-        test: /antd.*\.css/,
-        loaders: ['style', 'css', 'postcss'],
       }
     ]
   },
