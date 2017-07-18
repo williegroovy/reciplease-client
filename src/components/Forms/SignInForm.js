@@ -5,44 +5,43 @@ import { signinUser } from '../../store/User/actions';
 
 import { TextField, Button, FontIcon } from 'react-md';
 
-const renderTextField = ({ input, iconType, meta: { touched, error }, ...others }) => (
+const renderTextField = ({ input, iconType, error, errorMessage, meta, ...others }) => (
   <TextField
-    {...input} {...others} leftIcon={<FontIcon>{iconType}</FontIcon>} error={touched && !!error} errorText={error}
+    {...input} {...others} leftIcon={<FontIcon>{iconType}</FontIcon>} error={meta.touched && !!meta.error} errorText={meta.error}
   />
-);
+  );
 
-const SignInForm = ({ handleSubmit }) => (
-  <form onSubmit={handleSubmit} className="sm-grid">
-    <Field
-      id="username"
-      name="username"
-      label="Username"
-      type="text"
-      iconType="person_outline"
-      component={renderTextField}
-      errorText="Log In error, check your username and try again."
-    />
+const SignInForm = ({ handleSubmit}) => {
+  return (
+    <form onSubmit={handleSubmit} className="sm-grid">
+      <Field
+        id="username"
+        name="username"
+        label="Username"
+        type="text"
+        iconType="person_outline"
+        component={renderTextField}
+      />
 
-    <Field
-      id="password"
-      name="password"
-      label="Password"
-      type="password"
-      iconType="lock_outline"
-      component={renderTextField}
-      errorText="Log In error, check your password and try again."
-
-    />
-    <Button type="submit" className="sign-in-btn md-grid" flat label="Sign In" />
-  </form>
-);
+      <Field
+        id="password"
+        name="password"
+        label="Password"
+        type="password"
+        iconType="lock_outline"
+        component={renderTextField}
+      />
+      <Button type="submit" primary className="sign-in-btn md-grid" flat label="Log In" />
+    </form>
+  );
+};
 
 
 function validate(formProps) {
   const errors = {};
   console.log('validate');
   if(!formProps.username) {
-    errors.username = 'Please enter an email';
+    errors.username = 'Please enter an username';
   }
 
   if(!formProps.password) {
@@ -51,12 +50,6 @@ function validate(formProps) {
 
   return errors;
 }
-
-const mapStateToProps = state => {
-  return {
-    error: state.user.error
-  }
-};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -67,6 +60,6 @@ const mapDispatchToProps = dispatch => {
 const signInForm = reduxForm({
   form: 'signin',
   validate,
-}, mapStateToProps)(SignInForm);
+})(SignInForm);
 
-export default connect(mapStateToProps, mapDispatchToProps)(signInForm);
+export default connect(null, mapDispatchToProps)(signInForm);

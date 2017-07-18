@@ -23,7 +23,6 @@ const renderClearIcon = (clearOverlayOnClick, clearPresentation)  => (
 );
 
 const Overlay = ({ clearPresentation, clearOverlayOnClick, children }) => {
-  console.log("Overlay Render");
   return (
     <div key="overlay" data-space='overlay' className="overlay" onClick={renderClearIcon(clearOverlayOnClick, clearPresentation)}>
       {clearIcon(() => clearPresentation)}

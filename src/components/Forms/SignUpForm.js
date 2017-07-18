@@ -6,70 +6,54 @@ import { signupUser } from '../../store/User/actions';
 
 import ReactSVG from 'react-svg';
 
-class SignUpForm extends Component {
+import { TextField, Button, FontIcon } from 'react-md';
 
-  constructor(props) {
-    super(props);
-  }
+const renderTextField = ({ input, iconType, error, errorMessage, meta, ...others }) => (
+  <TextField
+    {...input} {...others} leftIcon={<FontIcon>{iconType}</FontIcon>} error={meta.touched && !!meta.error} errorText={meta.error}
+  />
+);
 
-  renderAlert = () => {
-    if(this.props.errorMessage) {
-      return (
-        <div className="alert alert-danger">
-          <strong>Oops!</strong> {this.props.errorMessage}
-        </div>
-      );
-    }
-  };
+const SignUpForm = ({ handleSubmit}) => {
+  return (
+    <form onSubmit={handleSubmit} className="sm-grid">
+      <Field
+        id="username"
+        name="username"
+        label="Username"
+        type="text"
+        iconType="person_outline"
+        component={renderTextField}
+      />
 
-  renderField = ({input, label, type, meta: { touched, error }}) => (
-      <div style={{marginLeft: 20, marginRight: 20}}>
-        {touched && error &&  <ReactSVG className="mw-svg-warning" path="media/exclamation_warning_32.svg" />}
-        <input {...input} className="form-control" style={{marginBottom: '15px'}} type={type} placeholder={label}/>
-      </div>
-    );
+      <Field
+        id="password"
+        name="password"
+        label="Password"
+        type="password"
+        iconType="lock_outline"
+        component={renderTextField}
+      />
 
-  render() {
-
-    const { handleSubmit, applyFormClass } = this.props;
-
-    return (
-      <div className={applyFormClass}>
-        <form onSubmit={handleSubmit}>
-          <Field
-            name="email"
-            type="text"
-            component={this.renderField}
-            label="Email"
-          />
-
-          <Field
-            name="password"
-            type="password"
-            component={this.renderField}
-            label="Password"
-          />
-
-          <Field
-            name="passwordConfirm"
-            type="password"
-            component={this.renderField}
-            label="Confirm Password"
-          />
-
-          {this.renderAlert()}
-          <button type="submit" style={{marginRight: 20, float: 'right'}} className="btn btn-primary">Sign up</button>
-        </form>
-      </div>
-    );
-  }
-}
+      <Field
+        id="passwordConfirm"
+        name="passwordConfirm"
+        label="Password"
+        type="password"
+        iconType="lock_outline"
+        autoComplete="passwordConfirm"
+        component={renderTextField}
+      />
+      <Button type="submit" primary className="sign-in-btn md-grid" flat label="Register" />
+    </form>
+  );
+};
 
 function validate(formProps) {
   const errors = {};
 
-  if(!formProps.email) {
-    errors.email = 'Please enter an email';
+  if(!formProps.username) {
+    errors.username = 'Please enter an email';
   }
 
   if(!formProps.password) {
@@ -77,20 +61,15 @@ function validate(formProps) {
   }
 
   if(!formProps.passwordConfirm) {
-    errors.passwordConfirm = 'Please validate password';
+    errors.passwordConfirm = 'Please confirm password';
   }
 
   if(formProps.password !== formProps.passwordConfirm) {
     errors.password = 'Passwords must match';
+    errors.passwordConfirm = 'Passwords must match';
   }
   return errors;
 }
-
-const mapStateToProps = state => {
-  return {
-    errorMessage: state.user.error
-  }
-};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -101,6 +80,6 @@ const mapDispatchToProps = dispatch => {
 const signUpForm = reduxForm({
   form: 'signup',
   validate,
-}, mapStateToProps)(SignUpForm);
+})(SignUpForm);
 
-export default connect(mapStateToProps, mapDispatchToProps)(signUpForm);
+export default connect(null, mapDispatchToProps)(signUpForm);

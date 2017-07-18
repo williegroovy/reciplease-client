@@ -20,7 +20,7 @@
     margin-bottom: 10px;
   }
 
-  .sign-up-btn {
+  .sign-in-btn {
     margin-top: 15px;
     margin-bottom: 5px;
   }
@@ -36,6 +36,14 @@
 
     .md-text--secondary {
       font-size: 12px;
+      color: black;
+    }
+  }
+
+  #signinOverlay {
+    .md-text--secondary {
+      font-size: 12px;
+      color: white;
     }
   }
 

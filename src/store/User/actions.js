@@ -4,7 +4,6 @@ import { API_URL } from '../../constants/api';
 
 export const signinUser = ({username, password}) => {
   return dispatch => {
-    console.log("dispatch sign in");
     axios.post(`${API_URL}/signin`, {username, password})
       .then(response => {
         dispatch({ type: USER_AUTH });
@@ -13,23 +12,23 @@ export const signinUser = ({username, password}) => {
       })
       .catch(error => {
         console.log('error');
-        dispatch(authError('Incorrect username/password'));
-        throw error;
+        dispatch(authError('Unauthorized access, please try again!'));
+        console.log(error);
       });
   }
 };
 
-export const signupUser = ({email, password}) => {
+export const signupUser = ({username, password}) => {
   return dispatch => {
-    axios.post(`${API_URL}/signup`, {email, password})
+    axios.post(`${API_URL}/signup`, {username, password})
       .then(response => {
         dispatch({ type: USER_AUTH });
         localStorage.setItem('token', response.data.token);
         dispatch({type : TOGGLE_CARD, payload: null});
       })
       .catch(error => {
-        dispatch(authError('Email already in use'));
-        throw error;
+        dispatch(authError('Error creating account, please try again'));
+        console.log('signupUser Error', error);
       });
   }
 };

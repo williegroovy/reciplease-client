@@ -4,7 +4,7 @@ import { compose, setDisplayName, lifecycle } from 'recompose';
 import { SIGN_IN, SIGN_UP} from '../../constants/types';
 
 import SignInCard from './SignInCard';
-import SignUpModal from './SignUpModal';
+import SignUpModal from './SignUpCard';
 
 const FocusCardConductor = ({ currentCard, clearCard }) => {
   switch(currentCard) {

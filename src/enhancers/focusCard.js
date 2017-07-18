@@ -6,13 +6,10 @@ import { TOGGLE_CARD } from '../constants/types';
 
 export const currentCard = () => connect(state => ({focusCard: state.focusCard.currentCard}));
 
-export const cardActions = () => withHandlers(
-  {
-    clearFocusCard: ({ dispatch }) => () => dispatch(clearCard(dispatch)),
-    showCard: ({ dispatch }) => (card) => () => dispatch(showCard(dispatch, TOGGLE_CARD, card))
-  }
-);
-
+export const cardActions = () => withHandlers({
+  clearFocusCard: ({dispatch}) => () => dispatch(clearCard(dispatch)),
+  showCard: ({dispatch}) => (card) => dispatch(showCard(dispatch, TOGGLE_CARD, card))
+});
 
 // Maps owner props to a new collection of props that are passed to the base component.
 //mapProps(props => console.log('mapProps', props)),

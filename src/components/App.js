@@ -12,18 +12,16 @@ import RequireAuth from './require_auth';
 import FocusCardConductor from './Cards/FocusCardConductor';
 
 import '../stylesheets/main.scss';
-
-const App = ({ focusCard, clearFocusCard }) => {
-  return (
-    <div className="full-height">
-      <Route exact path="/" component={Landing} />
-      <Route exact path="/signout" component={SignOut} />
-      <Route path="/edit" component={Articles} />
-      <Route path="/account" component={RequireAuth(AccountHome)} />
-      <FocusCardConductor currentCard={focusCard} clearCard={clearFocusCard} />
-    </div>
-  );
-};
+//
+const App = (props) => (
+  <div className="full-height">
+    <Route exact path="/" component={Landing} />
+    <Route exact path="/signout" component={SignOut} />
+    <Route path="/edit" component={Articles} />
+    <Route path="/account" component={RequireAuth(AccountHome)} />
+    <FocusCardConductor currentCard={props.focusCard} clearCard={props.clearFocusCard} />
+  </div>
+);
 
 const mapStateToProps = (state) => {
   return {
