@@ -27,7 +27,7 @@ const menuButtons = (props) => {
     >
       <List>
         <ListItem
-          primaryText="Sign Out"
+          primaryText="Log Out"
           onClick={() => props.signOut()}
           rightIcon={<FontIcon style={{color: 'red'}}>power_settings_new</FontIcon>}
         />
