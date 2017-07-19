@@ -1,8 +1,8 @@
 import React from 'react';
 import { compose } from 'recompose';
 
-import { toggle } from '../../enhancers/focusCard';
-import { authenticated } from '../../enhancers/user';
+import { toggle } from '../../../enhancers/focusCard';
+import { authenticated } from '../../../enhancers/user';
 
 import Nav from './MainNav';
 

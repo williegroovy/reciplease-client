@@ -2,8 +2,8 @@ import React from 'react';
 import { compose, setDisplayName, withState } from 'recompose';
 import { Button, Panel, Table, Popover, OverlayTrigger } from 'react-bootstrap';
 
-import { permission } from '../enhancers/user';
-import { adminRequired } from '../constants/helpers';
+import { permission } from '../../../enhancers/user';
+import { adminRequired } from '../../../constants/helpers';
 
 const SalaryTable = () => (
   <Table striped bordered condensed hover>

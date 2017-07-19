@@ -1,6 +1,6 @@
 .card {
   position: relative;
-  transform: translateY(10%);
+  transform: translateY(5%);
   z-index: 1;
   display: flex;
   overflow: hidden;
@@ -17,12 +17,16 @@
   0 2px 8px 0 fade(#424242, 12%);
 
   img {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
 
-  .sign-in-btn {
+  .flip-card-btn {
     margin-top: 15px;
-    margin-bottom: 5px;
+  }
+
+  .form-submit-btn {
+    margin-top: 15px;
+    text-align: center;
   }
   .md-card-title i {
     color: gold;

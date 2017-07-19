@@ -5,7 +5,7 @@ import { reduxForm , Field } from 'redux-form';
 import { Form, FormGroup, ControlLabel, Button } from 'react-bootstrap';
 
 import FieldInput from '../Forms/FieldInput';
-import { setUsername } from '../../store/User/actions';
+import { setUsername } from '../../../store/User/actions';
 
 let UsernameField = ({ handleSubmit, pristine, submitting }) => {
   return(

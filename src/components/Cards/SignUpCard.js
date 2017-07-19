@@ -7,7 +7,7 @@ import { Card, CardTitle, FontIcon, Media, MediaOverlay, Button } from 'react-md
 import { cardActions } from '../../enhancers/focusCard';
 import { SIGN_IN } from '../../constants/types';
 
-import Overlay from '../Overlay';
+import Overlay from '../UtilityHOCs/Overlay';
 import SignUpForm from '../Forms/SignUpForm';
 import { ninjaHead } from '../../constants/media';
 
@@ -35,7 +35,15 @@ const SignUpCard = (props) => (
         title="Register"
         subtitle="Accounts are free and fun, scouts honor!" />
       <SignUpForm />
-      <Button className="md-cell--right" label="Log In" onClick={() => props.showCard(SIGN_IN)} flat iconBefore={false}>flip_to_back</Button>
+      <Button
+        className="flip-card-btn md-cell--right"
+        label="Log In"
+        onClick={() => props.showCard(SIGN_IN)}
+        flat
+        iconBefore={false}
+      >
+        flip_to_front
+      </Button>
     </Card>
   </Overlay>
 );

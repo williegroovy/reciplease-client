@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose, branch, renderComponent, setDisplayName} from 'recompose';
 
-import { toggle } from '../enhancers/focusCard';
-import { authenticated } from '../enhancers/user';
+import { toggle } from '../../../enhancers/focusCard';
+import { authenticated } from '../../../enhancers/user';
 
-import MainNav from './Nav/MainNav';
-import NavLinkAuth from './Nav/NavLinkAuth';
-import NavLinkUnAuth from './Nav/NavLinkUnAuth';
+import MainNav from './MainNav';
+import NavLinkAuth from './NavLinkAuth';
+import NavLinkUnAuth from './NavLinkUnAuth';
 
 let enhance = compose(
   setDisplayName('Header'),

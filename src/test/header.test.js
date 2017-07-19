@@ -5,16 +5,16 @@ import reactDom from 'react-dom/server';
 
 const render = reactDom.renderToStaticMarkup;
 
-import Header from '../components/Header';
+import Header from '../components/junk/Nav/Header';
 
 test('Header', nest => {
-  nest.test('...Nav should render the navbar', assert => {
-    const msg = 'Nav should render the navbar';
+  nest.test('...DashboardHeader should render the navbar', assert => {
+    const msg = 'DashboardHeader should render the navbar';
 
-    //const Nav = header(React);
+    //const DashboardHeader = header(React);
 
     const $ = dom.load(render(<Header />));
-    const output = $('.Nav').html();
+    const output = $('.DashboardHeader').html();
 
     const actual = output > 0;
     const expected = true;

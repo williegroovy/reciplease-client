@@ -1,7 +1,7 @@
 import React from 'react';
 import { withProps } from 'recompose';
 
-import { SIGN_IN, SIGN_UP } from '../../constants/types';
+import { SIGN_IN, SIGN_UP } from '../../../constants/types';
 
 import NavLink from './NavLink';
 import NavLinksRight from './NavLinksRight';

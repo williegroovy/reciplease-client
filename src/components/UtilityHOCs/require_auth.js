@@ -7,7 +7,7 @@ export default function (ComposedComponent) {
 
     static propTypes = {
       history: PropTypes.object.isRequired
-    }
+    };
 
     componentWillMount() {
       if (!this.props.authenticated) this.props.history.replace('/');

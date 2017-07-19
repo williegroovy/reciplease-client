@@ -1,8 +1,8 @@
 import React from 'react';
 import { compose, setDisplayName } from 'recompose';
-import { username as usernameEnhancer, permission as permissionEnhancer}  from '../../enhancers/user';
+import { username as usernameEnhancer, permission as permissionEnhancer}  from '../../../enhancers/user';
 
-import { capitalizeFirstChar } from '../../constants/helpers';
+import { capitalizeFirstChar } from '../../../constants/helpers';
 
 import NavLink from './NavLink';
 

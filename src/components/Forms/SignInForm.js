@@ -31,7 +31,7 @@ const SignInForm = ({ handleSubmit}) => {
         iconType="lock_outline"
         component={renderTextField}
       />
-      <Button type="submit" primary className="sign-in-btn md-grid" flat label="Log In" />
+      <Button style={{textAlign: 'center'}} className="form-submit-btn md-grid" type="submit" primary raised  label="Log In" />
     </form>
   );
 };

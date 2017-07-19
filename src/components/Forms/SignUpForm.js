@@ -44,7 +44,7 @@ const SignUpForm = ({ handleSubmit}) => {
         autoComplete="passwordConfirm"
         component={renderTextField}
       />
-      <Button type="submit" primary className="sign-in-btn md-grid" flat label="Register" />
+      <Button type="submit" primary raised className="form-submit-btn md-grid" label="Register" />
     </form>
   );
 };

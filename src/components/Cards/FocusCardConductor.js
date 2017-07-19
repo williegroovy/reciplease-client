@@ -1,5 +1,5 @@
 import React from 'react';
-import { compose, setDisplayName, lifecycle } from 'recompose';
+import { compose, setDisplayName } from 'recompose';
 
 import { SIGN_IN, SIGN_UP} from '../../constants/types';
 

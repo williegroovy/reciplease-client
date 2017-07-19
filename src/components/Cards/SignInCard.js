@@ -8,9 +8,13 @@ import { cardActions } from '../../enhancers/focusCard';
 import { SIGN_UP } from '../../constants/types';
 
 import FocusCard from './FoucsCard';
-import Overlay from '../Overlay';
+import Overlay from '../UtilityHOCs/Overlay';
 import SignInForm from '../Forms/SignInForm';
 import { ninjaHead } from '../../constants/media';
+
+const signInCardPropTypes = {
+  clearCard: PropTypes.func,
+};
 
 const clearIcon = <FontIcon>clear</FontIcon>;
 
@@ -35,14 +39,12 @@ const SignInCard = (props) => (
         title="Log In"
         subtitle="Demo User: demo - pass123" />
       <SignInForm />
-      <Button className="md-cell--right" label="Register" onClick={() => props.showCard(SIGN_UP)} flat iconBefore={false} >flip_to_back</Button>
+      <Button className="flip-card-btn md-cell--right" label="Register" onClick={() => props.showCard(SIGN_UP)} flat iconBefore={false} >flip_to_back</Button>
     </Card>
   </Overlay>
-)
+);
 
-SignInCard.propTypes = {
-  clearCard: PropTypes.func,
-};
+SignInCard.propTypes = signInCardPropTypes;
 
 const mapStateToProps = state => {
   return {

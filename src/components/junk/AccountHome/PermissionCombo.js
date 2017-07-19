@@ -5,7 +5,7 @@ import { reduxForm, Field, formValueSelector } from 'redux-form';
 import { FormGroup } from 'react-bootstrap';
 
 import FieldCombo from '../Forms/FieldCombo';
-import { setUserPermission } from '../../store/User/actions';
+import { setUserPermission } from '../../../store/User/actions';
 
 let permissionList = [
   {value: 'user', label: 'User'},
