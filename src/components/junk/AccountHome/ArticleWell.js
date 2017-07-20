@@ -1,7 +1,7 @@
 import React from 'react';
 import { ButtonGroup, Button, Glyphicon, Grid, Col, Row, Well } from 'react-bootstrap';
 
-import { permission } from '../../../enhancers/user';
+import { permission } from '../../../helpers/user';
 
 const ArticleButtonGroup = ({ disabled, articleName }) => (
   <ButtonGroup style={{ float: 'right', marginTop: 5 }}>

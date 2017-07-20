@@ -1,27 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect, withRouter } from 'react-router-dom';
-import { compose, lifecycle, setDisplayName, withProps, withState, withHandlers } from 'recompose'
-import { currentCard, cardActions } from '../enhancers/focusCard';
+import { compose, lifecycle, setDisplayName, withProps } from 'recompose'
+import { currentCard, cardActions } from '../helpers/focusCard';
+import protectedRoute from './HOCs/require_auth';
 
 import Landing from './Pages/Landing';
-import DashboardNav from './Dashboard/DashboardNav';
+import ProtectedRoute from './HOCs/ProtectedRoute';
+import PropsRoute from './HOCs/PropsRoute';
 
 
 import FocusCardConductor from './Cards/FocusCardConductor';
 
-import routes from '../routes';
+import dashboardRoutes from './Dashboard/dashboardRoutes';
 
 import '../stylesheets/main.scss';
 
-const RouteWithSubRoutes = route => (
-  <Route path={route.path} render={props => (
-    <route.component {...props} routes={route.routes} />
-  )} />
-);
+const RouteWithSubRoutes = (route) => {
+  console.log('weeeee');
+  return (
+    <ProtectedRoute path={route.path} auth={route.auth} redirectTo={'/'} routes={route.routes} component={route.component} />
+  );
+};
+
+/*
+    <Route path={route.path} auth={route.auth} render={props => (
+      <route.component {...props} routes={route.routes} />
+    )} />
+ */
 
 const App = (props) => {
-
+console.log('auth', props.authenticated);
   return(
     <Router>
       <div>
@@ -29,9 +38,13 @@ const App = (props) => {
           props.authenticated ? (<Redirect to="/dashboard" />) : (<Landing />)
         )} />
 
-        {routes.map((route, i) => (
-          <RouteWithSubRoutes key={i} {...route} />
-        ))}
+        {dashboardRoutes.map((route, i) => {
+          console.log('route', route);
+          console.log('auth', props.authenticated);
+          return (
+            <RouteWithSubRoutes key={i} auth={props.authenticated} {...route} />
+          )
+        })}
 
         <FocusCardConductor currentCard={props.focusCard} clearCard={props.clearFocusCard} />
       </div>
@@ -64,13 +77,3 @@ const enhance = compose(
 );
 
 export default withRouter(enhance(App));
-
-/*
-    <div className="full-height">
-      <Route exact path="/" component={Landing} />
-      <Route exact path="/signout" component={SignOut} />
-      <Route path="/edit" component={Articles} />
-      <Route path="/dashboard" component={RequireAuth(DashboardHome)} />
-      <FocusCardConductor currentCard={props.focusCard} clearCard={props.clearFocusCard} />
-    </div>
- */

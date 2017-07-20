@@ -2,7 +2,7 @@ import React from 'react';
 import { compose, setDisplayName, withState } from 'recompose';
 import { Button, Panel, Table, Popover, OverlayTrigger } from 'react-bootstrap';
 
-import { permission } from '../../../enhancers/user';
+import { permission } from '../../../helpers/user';
 import { adminRequired } from '../../../constants/helpers';
 
 const SalaryTable = () => (

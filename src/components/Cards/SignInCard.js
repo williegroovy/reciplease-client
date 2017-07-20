@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import { setDisplayName, compose } from 'recompose';
 import { Card, CardTitle, FontIcon, Media, MediaOverlay, Button } from 'react-md';
 
-import { cardActions } from '../../enhancers/focusCard';
+import { cardActions } from '../../helpers/focusCard';
 import { SIGN_UP } from '../../constants/types';
 
 import FocusCard from './FoucsCard';
-import Overlay from '../UtilityHOCs/Overlay';
+import Overlay from '../HOCs/Overlay';
 import SignInForm from '../Forms/SignInForm';
 import { ninjaHead } from '../../constants/media';
 

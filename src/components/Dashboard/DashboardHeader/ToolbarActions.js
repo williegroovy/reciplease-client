@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button, List, ListItem, FontIcon } from 'react-md';
 import MenuButton from 'react-md/lib/Menus/MenuButton';
 
@@ -28,7 +29,9 @@ export const rightToolbarActions = ({ signOut }) => {
     >
       <List key="vertList">
         <ListItem
+          component={Link}
           primaryText="Log Out"
+          to="/"
           onClick={() => signOut()}
           rightIcon={<FontIcon style={{color: 'red'}}>power_settings_new</FontIcon>}
         />
