@@ -3,7 +3,7 @@ const initialState = {
     error: '',
     authenticated: false,
     username: 'Darth Maul',
-    permission: 'user'
+    permission: 1
   },
   focusCard: { currentCard: null },
 };

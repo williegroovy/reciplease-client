@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm , Field} from 'redux-form';
-import { signinUser } from '../../store/User/actions';
+import { userLogin } from '../../store/User/actions';
 
 import { TextField, Button, FontIcon } from 'react-md';
 
@@ -53,7 +53,7 @@ function validate(formProps) {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSubmit: data => signinUser(data)(dispatch)
+    onSubmit: data => userLogin(data)(dispatch)
   }
 };
 

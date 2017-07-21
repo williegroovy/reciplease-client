@@ -1,6 +1,8 @@
 import { USER_AUTH, USER_UNAUTH, USER_AUTH_ERROR, SET_USERNAME, SET_USER_PERMISSION } from '../../constants/types';
 
 export default function(state = {}, { type, payload }) {
+  console.log('reducers', type);
+  console.log('payload', payload);
   switch(type) {
     case USER_AUTH:
       return { ...state, error: '', authenticated: true };
@@ -15,7 +17,7 @@ export default function(state = {}, { type, payload }) {
       return { ...state, username: payload };
 
     case SET_USER_PERMISSION:
-      return { ...state, permission: payload}
+      return { ...state, permission: payload }
   }
 
   return state;
