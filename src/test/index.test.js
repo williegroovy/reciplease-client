@@ -5,7 +5,7 @@ import reactDom from 'react-dom/server';
 
 const render = reactDom.renderToStaticMarkup;
 
-import landing from '../components/Pages/Landing';
+import landing from '../components/scenes/Landing';
 
 test('Landing', nest => {
   nest.test('...Welcome Message', assert => {

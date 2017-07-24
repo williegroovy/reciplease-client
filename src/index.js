@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './store/store';
 import { USER_AUTH, TOGGLE_CARD, SIGN_IN } from './constants/types';
 
-import App from './components/App';
+import App from './App';
 
 const token = localStorage.getItem('token');
 

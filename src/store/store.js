@@ -4,8 +4,17 @@ import createSagaMiddleware from 'redux-saga';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 
 import rootReducer from './index';
-import initialState from './initialState';
-import startForman from '../sagas/index';
+import startForeman from './Sagas/index';
+
+const initialState = {
+  user: {
+    error: '',
+    authenticated: false,
+    username: 'Darth Maul',
+    permission: 1
+  },
+  focusCard: { currentCard: null },
+};
 
 let middlewares = [];
 
@@ -33,6 +42,6 @@ if(process.env.NODE_ENV !== 'production' && window.devToolsExtension) {
 
 // create and export the store
 const store = createStore(rootReducer, initialState, middleware);
-sagaMiddleware.run(startForman);
+sagaMiddleware.run(startForeman);
 
 export default store;
