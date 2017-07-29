@@ -14,8 +14,8 @@ const App = (props) => {
   return(
     <Router>
       <div>
-        <Route exact path="/" render={() => (
-          props.authenticated ? (<Redirect to="/dashboard" />) : (<Landing />)
+        <Route exact path="/react" render={() => (
+          props.authenticated ? (<Redirect to="/react/dashboard" />) : (<Landing />)
         )} />
 
         { Dashboard(props) }

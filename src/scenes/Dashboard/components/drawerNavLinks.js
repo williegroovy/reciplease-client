@@ -1,42 +1,42 @@
 const drawerNavLinks = [
   {
-    to: '/dashboard',
+    to: '/react/dashboard',
     label: 'Home',
     icon: 'home',
     exact: true
   },
   {
-    to: '/dashboard/tables',
+    to: '/react/dashboard/tables',
     label: 'Tables',
     icon: 'line_style',
   },
   {
-    to: '/dashboard/media',
+    to: '/react/dashboard/media',
     label: 'Media',
     icon: 'theaters',
   },
   {
-    to: '/dashboard/charts',
+    to: '/react/dashboard/charts',
     label: 'Charts',
-    icon: 'show_chart',
+    icon: 'insert_chart',
   },
   {
-    to: '/dashboard/canvas',
+    to: '/react/dashboard/canvas',
     label: 'Canvas',
     icon: 'palette',
   },
   {
-    to: '/dashboard/maps',
+    to: '/react/dashboard/maps',
     label: 'Map Me',
     icon: 'person_pin_circle',
   },
   {
-    to: '/dashboard/order-out',
+    to: '/react/dashboard/order-out',
     label: 'Order Out',
     icon: 'restaurant',
   },
   {
-    to: '/dashboard/weather',
+    to: '/react/dashboard/weather',
     label: 'Weather Card',
     icon: 'wb_cloudy',
   }

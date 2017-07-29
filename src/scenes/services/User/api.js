@@ -8,7 +8,7 @@ export const userLogin = ({ username, password }) => {
   return (
     axios.post(`${API_ROOT}/login`, {username, password})
       .then(response => {
-        console.log('response', response.data);
+        console.log('login axios response', response.data);
         localStorage.setItem('token', response.data.token);
         return response.data;
       })

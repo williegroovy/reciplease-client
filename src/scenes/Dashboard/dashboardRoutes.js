@@ -11,47 +11,47 @@ import Weather from './scenes/Weather/index';
 
 const dashboardRoutes = [
   {
-    path: '/dashboard',
+    path: '/react/dashboard',
     component: DashboardWrapper,
     routes: [
       {
         exact: true,
-        path: '/dashboard',
+        path: '/react/dashboard',
         component: DashboardHome
       },
       {
         exact: true,
-        path: '/dashboard/tables',
+        path: '/react/dashboard/tables',
         component: DashboardTables
       },
       {
         exact: true,
-        path: '/dashboard/media',
+        path: '/react/dashboard/media',
         component: DashboardMedia
       },
       {
         exact: true,
-        path: '/dashboard/charts',
+        path: '/react/dashboard/charts',
         component: DashboardCharts
       },
       {
         exact: true,
-        path: '/dashboard/canvas',
+        path: '/react/dashboard/canvas',
         component: DashboardCanvas
       },
       {
         exact: true,
-        path: '/dashboard/maps',
+        path: '/react/dashboard/maps',
         component: DashboardMaps
       },
       {
         exact: true,
-        path: '/dashboard/order-out',
+        path: '/react/dashboard/order-out',
         component: DashboardOrderOut
       },
       {
         exact: true,
-        path: '/dashboard/weather',
+        path: '/react/dashboard/weather',
         component: Weather
       }
     ]

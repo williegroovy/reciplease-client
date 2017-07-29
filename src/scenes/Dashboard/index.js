@@ -5,7 +5,7 @@ import ProtectedRouteWithSubRoutes from '../../HOCs/ProtectedRouteWithSubRoutes'
 import dashboardRoutes from './dashboardRoutes';
 
 const Dashboard = (props) => (
-  dashboardRoutes.map((route, i) => <ProtectedRouteWithSubRoutes key={i} auth={props.authenticated} {...route} />)
+  dashboardRoutes.map((route, i) => <ProtectedRouteWithSubRoutes key={i} redirectTo={'/react'} auth={props.authenticated} {...route} />)
 );
 
 const enhancer = compose(

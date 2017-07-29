@@ -2,11 +2,16 @@ import axios from 'axios';
 import { TOGGLE_CARD, LOGIN, SIGN_IN, USER_AUTH, USER_UNAUTH, USER_AUTH_ERROR, SET_USERNAME, SET_USER_PERMISSION } from '../../constants/types';
 import { API_ROOT } from '../../constants/api';
 
-export const userLogin = (loginData) => (
-  dispatch => dispatch({ type: LOGIN, payload: loginData })
-);
+export const userLogin = (loginData) => {
+  console.log('loginData', loginData);
+  return(
+    dispatch => dispatch({ type: LOGIN, payload: loginData })
+  );
+}
 
-export const storeToken = (token) => {localStorage.setItem('token', token)};
+export const storeToken = (token) => {
+  localStorage.setItem('token', token)
+};
   /*
   return dispatch => {
     axios.post(`${API_ROOT}/login`, {username, password})
