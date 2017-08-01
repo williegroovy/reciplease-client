@@ -1,0 +1,15 @@
+.landing {
+  height: 100%;
+  padding-top: 10px;
+}
+.landing img {
+  display: inherit;
+  margin: 40px auto 0 auto;
+}
+.landing .login-form {
+  margin-top: 50px;
+}
+.landing .form-submit-btn {
+  margin-top: 15px;
+  text-align: center;
+}

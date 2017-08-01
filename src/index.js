@@ -3,24 +3,19 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import store from './store/store';
-import { USER_AUTH, TOGGLE_CARD, SIGN_IN } from './constants/types';
+import store from './store';
 
-import App from './App';
-
-const token = localStorage.getItem('token');
-
-// TODO: Fix security flaw so that any old token is no longer accepted.
-if(token) {
-  store.dispatch({type: USER_AUTH});
-} else {
-  store.dispatch({type: TOGGLE_CARD, payload: SIGN_IN})
-}
+import './index.css';
+import App from './containers/App/App';
+import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App/>
+      <App />
     </BrowserRouter>
-  </Provider>
-  , document.getElementById('app'));
+  </Provider>,
+  document.getElementById('root')
+);
+
+registerServiceWorker();
